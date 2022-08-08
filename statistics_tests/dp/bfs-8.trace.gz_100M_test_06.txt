@@ -1,0 +1,14 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 1000000
+Simulation Instructions: 100000000
+Number of CPUs: 1
+LLC sets: 2048
+LLC ways: 16
+Off-chip DRAM Size: 4096 MB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+CPU 0 runs /home/sonqo/Desktop/Diplom/traces_gap/bfs-8.trace.gz
+CPU 0 Bimodal branch predictor
+CPU 0 STLB -- Distance Prefetcher (DP)
+Caught signal: 2

@@ -1,0 +1,26 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 1000000
+Simulation Instructions: 100000000
+Number of CPUs: 1
+LLC sets: 2048
+LLC ways: 16
+Off-chip DRAM Size: 4096 MB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+CPU 0 runs /home/sonqo/Desktop/Diplom/traces_gap/bfs-8.trace.gz
+CPU 0 Bimodal branch predictor
+CPU 0 STLB -- Distance Prefetcher (DP)
+
+Warmup complete CPU 0 instructions: 1000001 cycles: 517375 (Simulation time: 0 hr 0 min 0 sec) 
+
+Heartbeat CPU 0 instructions: 10000002 cycles: 30898490 heartbeat IPC: 0.32364 cumulative IPC: 0.296237 (Simulation time: 0 hr 0 min 12 sec) 
+Heartbeat CPU 0 instructions: 20000000 cycles: 76604775 heartbeat IPC: 0.218788 cumulative IPC: 0.249713 (Simulation time: 0 hr 0 min 31 sec) 
+Heartbeat CPU 0 instructions: 30000000 cycles: 123240268 heartbeat IPC: 0.214429 cumulative IPC: 0.236305 (Simulation time: 0 hr 0 min 48 sec) 
+Heartbeat CPU 0 instructions: 40000000 cycles: 170713035 heartbeat IPC: 0.210647 cumulative IPC: 0.229148 (Simulation time: 0 hr 1 min 5 sec) 
+Heartbeat CPU 0 instructions: 50000001 cycles: 205888244 heartbeat IPC: 0.284291 cumulative IPC: 0.238593 (Simulation time: 0 hr 1 min 18 sec) 
+Heartbeat CPU 0 instructions: 60000000 cycles: 223680018 heartbeat IPC: 0.562057 cumulative IPC: 0.264381 (Simulation time: 0 hr 1 min 29 sec) 
+Heartbeat CPU 0 instructions: 70000000 cycles: 245268495 heartbeat IPC: 0.46321 cumulative IPC: 0.281919 (Simulation time: 0 hr 1 min 42 sec) 
+Heartbeat CPU 0 instructions: 80000000 cycles: 283375046 heartbeat IPC: 0.262422 cumulative IPC: 0.279292 (Simulation time: 0 hr 1 min 58 sec) 
+Heartbeat CPU 0 instructions: 90000000 cycles: 329534378 heartbeat IPC: 0.216641 cumulative IPC: 0.270503 (Simulation time: 0 hr 2 min 15 sec) 
+Caught signal: 2

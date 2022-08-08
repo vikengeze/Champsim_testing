@@ -1,0 +1,33 @@
+Stats (using Prefetch Buffer)
+Printing stats for baselines traces
+Stats are for prefetchers: 
+asp			 dp			 no			 oracle_ahead_by_1	 oracle_ahead_by_2	 oracle_ahead_by_3	 oracle_ahead_by_4	 oracle_ahead_by_5	 oracle_ahead_by_6	 sp			 
+Average IPCs
+0.28		 0.28		 0.28		 0.27		 0.27		 0.27		 0.27		 0.27		 0.27		 0.27		 
+Maximum gains (%)
+0.69		 0.65		 0.00		 1.60		 1.45		 1.45		 1.48		 1.47		 1.45		 1.28		 
+Average gains (%)
+-0.45		 -0.13		 0.00		 -1.36		 -1.45		 -1.39		 -1.36		 -1.37		 -1.35		 -1.32		 
+******************************************************************************************************************************
+Printing stats for pass_1 traces
+Stats are for prefetchers: 
+asp			 dp			 no			 oracle_ahead_by_1	 oracle_ahead_by_2	 oracle_ahead_by_3	 oracle_ahead_by_4	 oracle_ahead_by_5	 oracle_ahead_by_6	 sp			 
+Average IPCs
+0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 
+Maximum gains (%)
+1.48		 2.10		 0.00		 2.82		 2.82		 2.83		 2.83		 2.86		 2.93		 2.90		 
+Average gains (%)
+1.04		 1.19		 0.00		 2.01		 1.97		 1.98		 1.98		 1.99		 2.01		 1.84		 
+******************************************************************************************************************************
+Printing stats for pass_iflag traces
+Stats are for prefetchers: 
+asp			 dp			 no			 oracle_ahead_by_1	 oracle_ahead_by_2	 oracle_ahead_by_3	 oracle_ahead_by_4	 oracle_ahead_by_5	 oracle_ahead_by_6	 sp			 
+Average IPCs
+0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 0.28		 
+Maximum gains (%)
+1.48		 2.10		 0.00		 2.82		 2.82		 2.83		 2.83		 2.86		 2.93		 2.90		 
+Average gains (%)
+1.04		 1.19		 0.00		 2.01		 1.97		 1.98		 1.98		 1.99		 2.01		 1.84		 
+******************************************************************************************************************************
+
+

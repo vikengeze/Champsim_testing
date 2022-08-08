@@ -1,0 +1,98 @@
+#include "ooo_cpu.h"
+#include "cache.h"
+
+#include <cstdlib>
+#include <fstream>
+#include <limits>
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <sstream>
+
+#define MAX_PREFETCH_DEGREE 2
+
+unordered_map<uint64_t, vector<uint64_t>> prefetches;
+ifstream myfile;
+
+void CACHE::stlb_prefetcher_initialize() 
+{
+    cout << "CPU " << cpu << " STLB from_file prefetcher(simple)" << endl;
+
+    uint64_t instr_id, addr, ip;
+    string to_ken, data = "";
+    vector<string> tokens; 
+    myfile.open("prefetches.txt");
+
+    if(!myfile){
+        cerr << "error with the test boi";
+        exit(1);
+    }
+    stringstream iss;
+
+    while(getline(myfile, data)){
+        iss << data; 
+        while(getline(iss, to_ken, ',')){
+            tokens.push_back(to_ken);
+        }
+        iss.clear();
+        //cout << tokens << endl; //fix splits and then put data into instr_id and addr of unordered map
+    }
+
+    string par_instr_id, par_addr, par_ip;
+
+    for(int i=0; i<tokens.size(); i+=2){
+        par_instr_id = tokens[i];
+        par_addr = tokens[i+1];
+        //par_ip = tokens[i+2];
+
+        //cout << par_instr_id << " " << par_addr << " " << par_ip << endl;
+        
+        instr_id = stoul(par_instr_id, NULL);
+        addr = stoul(par_addr, NULL, 16);
+        //cout << instr_id << " - " << addr << endl;
+
+        auto itr = prefetches.find(instr_id);
+        if (itr == prefetches.end()) {
+            prefetches[instr_id] = vector<uint64_t>();
+            prefetches[instr_id].push_back(addr);
+        } else{
+            prefetches[instr_id].push_back(addr);
+        }
+    }
+}
+
+void CACHE::stlb_prefetcher_operate(uint64_t addr, uint64_t ip, uint8_t cache_hit, uint8_t type, int answer, int warmup, int * free_indexes, uint64_t instr_id, int iflag)
+{
+    uint64_t pf_addr;
+    auto itr = prefetches.find(instr_id);
+    if (itr != prefetches.end()){
+        for (auto i: itr->second){
+            pf_addr = i;
+            prefetch_page(ip, addr, pf_addr, FILL_L2, 0, 0, 0, 0, instr_id, type, iflag, 0, 0, 0);
+        }
+    }
+
+}
+
+
+void CACHE::stlb_prefetcher_cache_fill(uint64_t addr, uint32_t set, uint32_t way, uint8_t prefetch, uint64_t evicted_addr)
+{
+}
+
+void CACHE::stlb_prefetcher_final_stats(uint64_t prefetches, uint64_t hits, uint64_t misses, uint64_t swap, uint64_t dupli, uint64_t free, uint64_t real, uint64_t * mmu_cache_demand_hits, uint64_t * mmu_cache_prefetch_hits, uint64_t * rfhits, uint64_t * free_hits, uint64_t mr[4][4], uint64_t stlb_misses[2])
+{
+    cout << endl << "*******************************************" << endl;
+    cout << "CPU " << cpu << " STLB -- Sequential L2-TLB Prefetcher final stats" << endl;
+    cout << "*******************************************" << endl;
+
+    cout << endl << "-------------------------------------------" << endl;
+    cout << "D-STLB MISSES: " << stlb_misses[0] << endl;
+    cout << "I-STLB MISSES: " << stlb_misses[1] << endl;
+    cout << "-------------------------------------------" << endl;
+
+    cout << endl << "-------------------------------------------" << endl;
+    cout << "PQ hits: " << hits << endl; 
+    cout << "PQ misses: " << misses << endl;
+    cout << "-------------------------------------------" << endl;
+    myfile.close();
+}
